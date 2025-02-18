@@ -1,0 +1,51 @@
+<main>
+	<%- include('../partials/adminSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Assign Agent</h5>
+		</div>
+		
+		<form action="/admin/donations/assign/<%= equipment._id %>" method="POST" class="border m-4 my-3 p-4 bg-white rounded-2 shadow">
+			
+			<div class="row">
+				<div class="mb-4 col-sm-4">
+					<label for="donor" class="form-label">Donor Name</label>
+					<input type="text" class="form-control" id="donor" value="<%= equipment.donor.firstName + ' ' + equipment.donor.lastName %>" disabled>
+				</div>
+				
+				<div class="mb-4 col-sm-4">
+					<label for="address" class="form-label">Address</label>
+					<input type="text" class="form-control" id="address" value="<%= equipment.address %>" disabled>
+				</div>
+				<div class="mb-4 col-sm-4">
+					<label for="address" class="form-label">Phone</label>
+					<input type="number" class="form-control" id="phone" value="<%= equipment.phone %>" disabled>
+                </div>
+			</div>
+			
+			<div class="mb-4">
+				<label for="agent" class="form-label">Select Agent</label>
+				<select name="agent" class="form-select" id="agent">
+					<% for(let i=0; i<agents.length; i++) { %>
+						<option value="<%= agents[i]._id %>">
+							<%= agents[i].firstName + " " + agents[i].lastName %> 
+							<% if (agents[i].role) { %> - <%= agents[i].role %> <% } %>
+							<% if (agents[i].phone) { %> (Phone: <%= agents[i].phone %>) <% } %>
+						</option>
+					<% } %>
+				</select>
+			</div>
+			
+			<div class="mb-4">
+				<label for="msg" class="form-label">Message to Agent</label>
+				<textarea type="text" name="adminToAgentMsg" class="form-control" id="msg" placeholder="You can write here some msg.."></textarea>
+			</div>
+			
+			<button type="submit" class="btn w-75 d-block m-auto mt-4">Assign</button>
+		</form>
+		
+	</div>
+</main>

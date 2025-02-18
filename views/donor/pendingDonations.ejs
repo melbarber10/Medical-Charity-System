@@ -1,0 +1,93 @@
+<main>
+	<%- include('../partials/donorSidebar') %>
+	
+	<div id="main-wrapper">
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Pending Requests</h5>
+		</div>
+		<div class="m-3">
+            <div class="mb-2 d-flex justify-content-end">
+
+            <form action="/donor/donations/pending" method="GET" class="mb-4">
+                <select name="category" id="category" class="form-select d-inline-block" style="width: auto;"onchange="this.form.submit()">
+                    <option value="" <%= !selectedCategory ? 'selected' : '' %>>All Categories</option>
+                    <option value="medical equipment" <%= selectedCategory === 'medical equipment' ? 'selected' : '' %>>Medical Equipment</option>
+                    <option value="clothes" <%= selectedCategory === 'clothes' ? 'selected' : '' %>>Clothes</option>
+                    <option value="medicine" <%= selectedCategory === 'medicine' ? 'selected' : '' %>>Medicine</option>
+                </select>
+
+            </form>
+        </div>
+        
+		<div class="m-4">
+			<% for(let i = 0; i < pendingRequests.length; i++) { %>
+				<div class="bg-white mb-4 p-4 shadow-sm rounded">
+					<div class="mb-2">
+						<span>Category:</span>
+						<span><%= pendingRequests[i].category %></span>
+					</div>
+					<div class="bg-white mb-4 p-4 shadow-sm rounded">
+                        <div class="mb-2">
+                            <img src="<%= pendingRequests[i].image %>" alt=" Donation Image" class="donation-image img-fluid rounded">
+                        </div>
+					<div class="mb-2">
+                        <span>Item Description:</span>
+                        <span><%= pendingRequests[i].itemDescription %></span>
+                    </div>
+					<div class="mb-2">
+						<span>Quantity:</span>
+						<span><%= pendingRequests[i].quantity %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Condition:</span>
+						<span><%= pendingRequests[i].condition %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Address for Pickup:</span>
+						<span><%= pendingRequests[i].address %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Phone:</span>
+						<span><%= pendingRequests[i].phone %></span>
+					</div>
+					 
+					<div class="mb-2">
+						<span>Delivery Time:</span>
+						<span><%= pendingRequests[i].deliveryTime %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Message:</span>
+						<span><%= pendingRequests[i].donorToAdminMsg %></span>
+					</div>
+					
+					<div class="mb-2">
+						<span>Status:</span>
+						
+						<% if(pendingRequests[i].status == "pending") { %>
+							<span class="text-pending">Your donation request hasn't been processed yet.</span>
+						<% } else if(pendingRequests[i].status == "rejected") { %>
+							<span class="text-rejected">Your donation request has been rejected.</span>
+						<% } else if(pendingRequests[i].status == "accepted") { %>
+							<span class="text-accepted">Your donation request has been accepted. Please wait while an agent is being assigned.</span>
+						<% } else if(pendingRequests[i].status == "assigned") { %>
+							<span class="text-assigned">Your donation request has been accepted and the agent: <%= pendingRequests[i].agent.firstName + " " + pendingRequests[i].agent.lastName %> has been assigned for collecting the equipment from your location.</span>
+						<% } %>
+					</div>
+					
+					<div class="d-flex justify-content-end mt-3">
+						<a href="/donor/equipments/<%= pendingRequests[i]._id %>/edit" class="btn btn-primary me-2">Edit</a>
+
+						<form action="/donor/equipments/<%= pendingRequests[i]._id %>?_method=DELETE" method="POST" style="display: inline;">
+							<button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this donation?')">Delete</button>
+						</form>
+											</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,47 @@
+<main>
+	<%- include('../partials/adminSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Pending Requests</h5>
+		</div>
+		
+		<div class="col col-sm-11 col-12 m-auto my-4" style="max-height: 75%; overflow: auto;">
+			<table class="table table-info table-striped table-hover m-0 bg-white">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Donor name</th>
+						<th scope="col">Category</th>
+						<th scope="col">Item</th>
+						<th scope="col">Condition</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Address to collect</th>
+						<th scope="col">Phone</th>
+						<th scope="col">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(let i=0; i<pendingEquipment.length; i++) { %>
+						<t>
+							<th scope="row"> <%= i+1 %> </th>
+							<td> <%= pendingEquipment[i].donor.firstName + " " + pendingEquipment[i].donor.lastName %> </td>
+							<td> <%= pendingEquipment[i].category %> </td>
+							<td> <%= pendingEquipment[i].itemDescription %> </td>
+							<td> <%= pendingEquipment[i].condition %> </td>
+							<td> <%= pendingEquipment[i].quantity %> </td>
+							<td> <%= pendingEquipment[i].address %></td>
+							<td> <%= pendingEquipment[i].phone %></td>
+
+							<td class="fw-bold text-<%= pendingEquipment[i].status %>"> <%= pendingEquipment[i].status %> </td>
+							<td><a href="/admin/donations/view/<%= pendingEquipment[i]._id %>" class="btn">View</a></td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</main>

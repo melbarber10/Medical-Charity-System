@@ -1,0 +1,79 @@
+<main>
+	<%- include('../partials/adminSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Dashboard</h5>
+		</div>
+		
+		<div class="m-5">
+			<div class="mb-4">
+				<h4 class="mb-3 text-white">System Users</h4>
+				<div class="d-flex gap-3 flex-wrap text-white">
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numAdmins %></div>
+						<div class="fs-5">Managers</div>
+					</div>
+					
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numDonors %></div>
+						<div class="fs-5">Donors</div>
+					</div>
+					
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numAgents %></div>
+						<div class="fs-5">Agents</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mb-4">
+				<h4 class="mb-3 text-white">Donations</h4>
+				<div class="d-flex gap-3 flex-wrap text-white">
+					<div class="bg-warning rounded p-3" style="width: 20%;">
+						<div class="fs-1"><%= numPendingEquipment %></div>
+						<div class="fs-5">New Requests</div>
+					</div>
+					
+					<div class="bg-secondary rounded p-3" style="width: 20%;">
+						<div class="fs-1"><%= numAcceptedEquipment %></div>
+						<div class="fs-5">Requests to be Assigned</div>
+					</div>
+					
+					<div class="bg-danger rounded p-3" style="width: 20%;">
+						<div class="fs-1"><%= numAssignedEquipment %></div>
+						<div class="fs-5">Requests Not Collected Yet</div>
+					</div>
+					
+					<div class="bg-success rounded p-3" style="width: 20%;">
+						<div class="fs-1"><%= numCollectedEquipment %></div>
+						<div class="fs-5">Requests that Collected</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mb-4">
+				<h4 class="mb-3 text-white">Donation Types</h4>
+				<div class="d-flex gap-3 flex-wrap text-white">
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numMedicalDonations %></div>
+						<div class="fs-5">Medical Equipment Donations</div>
+					</div>
+
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numClothesDonations %></div>
+						<div class="fs-5">Clothes Donations</div>
+					</div>
+
+					<div class="bg-primary rounded p-3" style="width: 25%;">
+						<div class="fs-1"><%= numMedicineDonations %></div>
+						<div class="fs-5">Medicine Donations</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</main>

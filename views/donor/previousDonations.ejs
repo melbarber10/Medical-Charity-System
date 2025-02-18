@@ -1,0 +1,45 @@
+<main>
+	<%- include('../partials/donorSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Previous Requests</h5>
+		</div>
+		
+		<div class="col col-sm-11 col-12 m-auto my-4" style="max-height: 75%; overflow: auto;">
+			<table class="table table-info table-striped table-hover m-0 bg-white">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Category</th>
+						<th scope="col">Item</th>
+						<th scope="col">Condition</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Address</th>
+						<th scope="col">Delivery Time</th>
+						<th scope="col">Agent Assigned</th>
+						<th scope="col">collection Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(let i=0; i<previousRequests.length; i++) { %>
+						<tr>
+							<th scope="row"> <%= i+1 %> </th>
+							<td> <%= previousRequests[i].category %> </td>
+							<td> <%= previousRequests[i].itemDescription %> </td>
+							<td> <%= previousRequests[i].condition %> </td>
+							<td> <%=previousRequests[i].quantity %></td>
+							<td> <%=previousRequests[i].address %></td>
+							<td> <%= previousRequests[i].deliveryTime.toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short"}) %> </td>
+							<td> <%= previousRequests[i].agent.firstName + " " + previousRequests[i].agent.lastName %> </td>
+							<td> <%= previousRequests[i].collectionTime.toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short"}) %> </td>
+						</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</main>

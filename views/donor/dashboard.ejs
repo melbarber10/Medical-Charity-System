@@ -1,0 +1,54 @@
+<main>
+	<%- include('../partials/donorSidebar') %>
+	
+	<div id="main-wrapper">
+		
+		<div class="bg-white shadow-sm p-3">
+			<span class="me-3" id="sidebar-toggler-btn"><i class="fas fa-bars"></i></span>
+			<h5 class="m-0 color-theme d-inline-block">Dashboard</h5>
+		</div>
+		
+		<div class="d-flex gap-3 flex-wrap m-5 text-white">
+			
+			<div class="bg-success rounded p-2" style="width: 80%;">
+				<div class="fs-1"><%= numCollectedRequests %></div>
+				<div class="fs-5">Completed Donations  Done by You</div>
+			</div>
+			
+			<div class="bg-secondary rounded p-3" style="width: 80%;">
+				<div class="fs-1"><%= numPendingRequests %></div>
+				<div class="fs-5"> Requests that Not processed Yet</div>
+			</div>
+			
+			<div class="bg-primary rounded p-3" style="width: 80%;">
+				<div class="fs-1"><%= numAcceptedRequests %></div>
+				<div class="fs-5">Accepted Requests - and will be assigned Soon</div>
+			</div>
+			
+			<div class="bg-danger rounded p-3" style="width: 80%;">
+				<div class="fs-1"><%= numAssignedRequests %></div>
+				<div class="fs-5">Requests Not Collected  yet</div>
+			</div>
+			<div class="p-3 w-100">
+				<h1 class="mt-4 mb-3">Donation Types</h1>
+			</div>
+
+			<div class="bg-primary rounded p-3" style="width: 25%;">
+				<div class="fs-1"><%= numMedicalRequests %></div>
+				<div class="fs-5">Medical Equipment Donations</div>
+			</div>
+
+			<div class="bg-primary rounded p-3" style="width: 25%;">
+				<div class="fs-1"><%= numClothesRequests %></div>
+				<div class="fs-5">Clothes Donations</div>
+			</div>
+
+			<div class="bg-primary rounded p-3" style="width: 25%;">
+				<div class="fs-1"><%= numMedicineRequests %></div>
+				<div class="fs-5">Medicine Donations</div>
+			</div>
+			
+		</div>
+		
+	</div>
+</main>
