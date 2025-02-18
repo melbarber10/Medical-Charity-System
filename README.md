@@ -49,6 +49,9 @@ Medical Charity System is a Node.js-based web application designed to streamline
 - **Session Management:** express-session
 - **Others:** connect-flash, method-override
 
+> **Note:** This project is built using the Model-View-Controller (MVC) design pattern for clear separation of concerns and maintainability.
+
+
 ---
 
 ## Installation
