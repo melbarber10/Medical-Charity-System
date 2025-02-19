@@ -5,17 +5,21 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 const methodOverride = require("method-override");
+
+
 const homeRoutes = require("./routes/home.js");
 const authRoutes = require("./routes/auth.js");
 const adminRoutes = require("./routes/admin.js");
 const donorRoutes = require("./routes/donor.js");
 const agentRoutes = require("./routes/agent.js");
+
+// Connect to MongoDB
 require("dotenv").config();
 require("./config/dbConnection.js")();
 require("./config/passport.js")(passport);
 
 
-
+// Set up EJS views and static assets
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.use("/assets", express.static(__dirname + "/assets"));

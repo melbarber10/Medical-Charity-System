@@ -75,7 +75,7 @@ Medical Charity System is a Node.js-based web application designed to streamline
 
    ```env
    PORT=3500
-   MONGODB_URI=your_mongodb_connection_string
+   MONGO_URI=your_mongodb_connection_string
    SESSION_SECRET=your_session_secret
    ```
 
@@ -94,7 +94,7 @@ Medical Charity System is a Node.js-based web application designed to streamline
 ## Configuration
 
 - **Database:**  
-  Ensure MongoDB is running locally or use a cloud provider. Update the `MONGODB_URI` in your `.env` file accordingly.
+  Ensure MongoDB is running locally or use a cloud provider. Update the `MONGO_URI` in your `.env` file accordingly.
 
 - **File Uploads:**  
   Uploaded images are stored in the `public/uploads` directory. Make sure this directory exists and is writable.
